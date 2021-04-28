@@ -7,6 +7,7 @@
                                                                        
 </pre>
 
+[![codecov](https://codecov.io/gh/pzinemanas/test-ci/branch/master/graph/badge.svg?token=NQUVQW5506)](https://codecov.io/gh/pzinemanas/test-ci)
 [![PyPI](https://img.shields.io/pypi/v/DCASE-models)](https://pypi.org/project/DCASE-models/)
 [![GitHub license](https://img.shields.io/github/license/pzinemanas/DCASE-models)](https://github.com/pzinemanas/DCASE-models/blob/master/LICENSE)
 
