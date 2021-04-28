@@ -8,6 +8,7 @@ from keras.models import Model
 import os
 import numpy as np
 import pytest
+import shutil
 
 def _clean(path):
     if os.path.isdir(path):
