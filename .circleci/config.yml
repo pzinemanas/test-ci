@@ -20,6 +20,9 @@ jobs:
           command: pip install .[tests]
           name: Install the library
       - run:
+          command:  pip install 'h5py==2.10.0' --force-reinstall
+          name: Reinstall h5py         
+      - run:
           command: pytest --cov-report term-missing --cov-report=xml --cov dcase_models ./tests
           name: Tests    
       - codecov/upload:
