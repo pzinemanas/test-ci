@@ -19,7 +19,7 @@ jobs:
           command: pip install .[tests]
           name: Install the library
       - run:
-          command: cd tests & pytest tests
+          command: cd tests & pytest
           name: Tests         
 workflows:
   main:
