@@ -25,7 +25,6 @@ setuptools.setup(
         'PyYAML==5.2',
         'numba==0.48.0',
         'librosa==0.7.1',
-        'openl3==0.3.1',
         'scikit-learn==0.22.1',
         'keras==2.2.4',
        # 'tensorflow-gpu==1.12.0',

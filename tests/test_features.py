@@ -1,5 +1,5 @@
 from dcase_models.data.feature_extractor import FeatureExtractor
-from dcase_models.data.features import MelSpectrogram, Spectrogram, MFCC, Openl3
+from dcase_models.data.features import MelSpectrogram, Spectrogram, MFCC
 from dcase_models.data.features import RawAudio, VGGishEmbeddings, FramesAudio
 from dcase_models.data.dataset_base import Dataset
 from dcase_models.data.data_generator import DataGenerator
@@ -53,7 +53,16 @@ def test_mfcc():
     shape = feature_extractor.get_shape(2.0)
     assert shape == (1, 32, 20)
 
+openl3_installed = True
+try:
+    import openl3
+except:
+    openl3_installed = False
+
+@pytest.mark.skipif(not openl3_installed,
+                    reason="Openl3 is not installed")
 def test_openl3():
+    from dcase_models.data.features import Openl3
     feature_extractor = Openl3()
     shape = feature_extractor.get_shape(2.0)
     assert shape == (4, 512)

@@ -1,6 +1,5 @@
 import numpy as np
 import librosa
-import openl3
 import inspect
 import sys
 
@@ -407,6 +406,7 @@ class Openl3(FeatureExtractor):
     >>> features.extract(dataset)
 
     """
+    
     def __init__(self, sequence_time=1.0, sequence_hop_time=0.5,
                  audio_win=1024, audio_hop=680, sr=22050,
                  content_type="env", input_repr="mel256", embedding_size=512):
@@ -419,11 +419,13 @@ class Openl3(FeatureExtractor):
         self.content_type = content_type
         self.input_repr = input_repr
         self.embedding_size = embedding_size
+        import openl3
         self.openl3 = openl3.models.load_audio_embedding_model(
             input_repr, content_type, embedding_size)
 
     def calculate(self, file_name):
         audio = self.load_audio(file_name, change_sampling_rate=False)
+        import openl3
         emb, ts = openl3.get_audio_embedding(
             audio, self.sr,
             model=self.openl3,
