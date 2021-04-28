@@ -542,7 +542,8 @@ class VGGishEmbeddings(FeatureExtractor):
 
     """
     def __init__(self, sequence_hop_time=0.96,
-                 pad_mode='reflect', include_top=True, compress=True):
+                 pad_mode='reflect', include_top=True, compress=True,
+                 load_pretrained_weights=True):
 
         from dcase_models.model.models import VGGish
         
@@ -573,7 +574,8 @@ class VGGishEmbeddings(FeatureExtractor):
             n_frames_cnn=96, n_freq_cnn=64, n_classes=0,
             embedding_size=128, pooling='avg', include_top=include_top, compress=compress)
         
-        self.vggish.load_pretrained_model_weights()
+        if load_pretrained_weights:
+            self.vggish.load_pretrained_model_weights()
 
     def frame(self, data, window_length, hop_length):
         """Convert array into a sequence of successive possibly overlapping frames.
