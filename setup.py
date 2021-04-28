@@ -20,7 +20,6 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'numpy==1.17.4',
-        'pandas==0.25.3',
         'SoundFile==0.10.3.post1',
         'PyYAML==5.2',
         'numba==0.48.0',
