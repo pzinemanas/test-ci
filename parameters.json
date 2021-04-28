@@ -1,0 +1,114 @@
+{
+    "features" : {
+        "sequence_time": 1.0, 
+        "sequence_hop_time":0.5,
+        "audio_hop":680,
+        "audio_win":1024,
+        "sr": 22050,
+        "Spectrogram" : {
+            "n_fft":1024
+        },
+        "MelSpectrogram" : {
+            "mel_bands": 64,
+            "n_fft":1024
+        },
+        "Openl3" : {
+            "content_type" : "env",
+            "input_repr" : "mel256", 
+            "embedding_size" : 512
+        },
+        "RawAudio" : {},
+        "FramesAudio" : {}
+    },
+
+    "train" : {
+        "early_stopping" : 30,
+        "epochs" : 50,
+        "considered_improvement" : 0,
+        "learning_rate" : 0.001,
+        "batch_size" : 128,
+        "verbose" : 1,
+        "optimizer" : "Adam"
+    },
+
+    "models" : {
+        "MLP" : {
+            "normalizer" : "minmax",
+            "model_arguments" : {},
+            "train_arguments": {}
+        },
+        "SB_CNN" : {
+            "normalizer" : "minmax",  
+            "model_arguments" : {
+                "n_dense_cnn" : 64,
+                "n_channels" : 0,
+                "filter_size_cnn" : [5, 5], 
+                "pool_size_cnn" : [2,2]
+            },
+            "train_arguments": {}
+        },
+        "SB_CNN_SED" : {
+            "normalizer" : "minmax",     
+            "model_arguments" : {},
+            "train_arguments": {}
+        },
+        "A_CRNN" : {
+            "normalizer" : "minmax",     
+            "model_arguments" : {},
+            "train_arguments": {}
+        },     
+        "VGGish" : {
+            "normalizer" : "minmax",     
+            "model_arguments" : {},
+            "train_arguments": {}
+        } 
+    },
+
+    "datasets" : {
+        "UrbanSound8k" : {
+            "dataset_path" : "datasets/UrbanSound8K",
+            "evaluation_mode" : "cross-validation"
+        },
+        "ESC50" : {
+            "dataset_path" : "datasets/ESC50",
+            "evaluation_mode" : "cross-validation"
+        },
+        "ESC10" : {
+            "dataset_path" : "datasets/ESC50",
+            "evaluation_mode" : "cross-validation"
+        },
+        "URBAN_SED" : {
+            "dataset_path" : "datasets/URBAN-SED_v2.0.0",
+            "evaluation_mode" : "train-validate-test"
+        },
+        "SONYC_UST" : {
+            "dataset_path" : "datasets/SONYC_UST",
+            "evaluation_mode" : "train-validate-test"
+        },
+        "TAUUrbanAcousticScenes2020Mobile" : {
+            "dataset_path" : "datasets/TAUUrbanAcousticScenes2020Mobile",
+            "evaluation_mode" : "train-test"        
+        },
+        "TAUUrbanAcousticScenes2019" : {
+            "dataset_path" : "datasets/TAUUrbanAcousticScenes2019",
+            "evaluation_mode" : "train-test"          
+        },
+        "TUTSoundEvents2017" : {
+            "dataset_path" : "datasets/TUTSoundEvents2017",
+            "evaluation_mode" : "cross-validation-with-test"          
+        },
+        "FSDKaggle2018" : {
+            "dataset_path" : "datasets/FSDKaggle2018",
+            "evaluation_mode" : "train-validate-test"          
+        },
+        "MAVD" : {
+            "dataset_path" : "datasets/MAVD",
+            "evaluation_mode" : "train-validate-test"          
+        }  
+    },
+    "data_augmentations": [
+        {"type": "pitch_shift", "n_semitones": -1},
+        {"type": "time_stretching", "factor": 1.05},
+        {"type": "white_noise", "snr": 60}  
+    ]
+}
