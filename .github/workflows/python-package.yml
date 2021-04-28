@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6]
+        python-version: [3.7]
 
     steps:
     - uses: actions/checkout@v2
@@ -46,7 +46,7 @@ jobs:
       uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./coverage1.xml,./coverage2.xml
+        files: ./coverage.xml
         directory: ./coverage/reports/
         flags: unittests
         name: codecov-umbrella
