@@ -87,6 +87,6 @@ def test_frames_audio():
     assert shape == (1, 32, 1024)
 
 def test_vggish():
-    feature_extractor = VGGishEmbeddings()
+    feature_extractor = VGGishEmbeddings(load_pretrained_weights=False)
     shape = feature_extractor.get_shape(2.0)
     assert shape == (3, 128)
