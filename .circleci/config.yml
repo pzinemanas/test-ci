@@ -1,0 +1,27 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    docker:
+      - image: python:3.6
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: apt-get update && apt-get install -y wget libsndfile-dev libsox-fmt-mp3
+      - run:
+          command: pip install "tensorflow<1.14"
+          name: Install TensorFlow
+      - run:
+          command: pip install .[tests]
+          name: Install the library
+      - run:
+          command: cd tests & pytest
+          name: Tests         
+workflows:
+  main:
+    jobs:
+      - build-and-test
