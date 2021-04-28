@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@0.2.1
+  codecov: codecov/codecov@1.0.4
 
 jobs:
   build-and-test:
@@ -19,8 +20,10 @@ jobs:
           command: pip install .[tests]
           name: Install the library
       - run:
-          command: cd tests & pytest
-          name: Tests         
+          command: pytest --cov-report term-missing --cov-report=xml --cov dcase_models ./tests
+          name: Tests    
+      - codecov/upload:
+          file: coverage.xml          
 workflows:
   main:
     jobs:
