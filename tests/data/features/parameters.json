@@ -1,0 +1,1 @@
+{"sequence_time": 1.0, "sequence_hop_time": 0.5, "audio_hop": 680, "audio_win": 1024, "sr": 22050, "sequence_frames": 32, "sequence_hop": 16, "features_folder": "features"}
