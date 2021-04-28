@@ -9,13 +9,15 @@ jobs:
       - image: python:3.6
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
       - run:
-          command: ./manage.py test
-          name: Test
-
+          command: pip install "tensorflow<1.14"
+          name: Install TensorFlow
+      - run:
+          command: pip install .[tests]
+          name: Install the library
+      - run:
+          command: pytest tests
+          name: Tests         
 workflows:
   main:
     jobs:
